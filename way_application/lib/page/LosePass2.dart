@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:way_application/page/LosePass.dart';
-import 'Reg_Page.dart';
-import 'LosePass.dart';
-import 'MainPage.dart';
+import 'package:way_application/page/LoginApp.dart';
 
-class LoginApp extends StatelessWidget {
-  Color  BLUE = Color(0xFF4C44CF);
-  Color  GRAY = Color(0xFF333333);
-  Color  RED = Color(0xFFE953DA);
+class LosePasss extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(title: Row(
+          children: [
+            IconButton(
+              onPressed: (){Navigator.pop(context);},
+              icon: Icon(Icons.arrow_back,color: Colors.blueAccent,)
+            ),
+            Padding(padding: EdgeInsets.only(left: 100)),
+            Text('Шаг 2/2',style: TextStyle(color: Color(0xFF333333)),)
+          ],
+        ),
+        backgroundColor:Colors.white ,
+        ),
         body: Column(
           children: [
-            Padding(padding: EdgeInsets.only(top: 27)),
+            Padding(padding: EdgeInsets.only(top: 63)),
             Center(
-              child: Image(
-                image: AssetImage('assets/images/Log_item.png'),
-              ),
+              child: Text('Смена пароля',style: TextStyle(fontSize: 36,color: Color(0xFF333333)))
             ),
-            Padding(padding: EdgeInsets.only(top: 12)),
-            Title(
-              color: Colors.black,
-               child: Text("Добро пожаловать!",style: TextStyle(
-                fontSize: 30 
-               ))
-              ),
-            Padding(padding: EdgeInsets.only(top: 18)),
-            Text("Войдите, чтобы продолжить",style: TextStyle(fontSize: 14),),
-            Padding(padding: EdgeInsets.only(top: 36)),
+            Container(
+              padding:EdgeInsets.fromLTRB(32, 5, 32, 29),             
+              child: Text('Пожалуйста, укажите новый пароль',
+              style: TextStyle(fontSize: 14,color: Color(0xFF333333)))
+            ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(30, 0, 30, 8.5),
+              padding: const EdgeInsets.fromLTRB(32, 5, 32, 5),
               child: Center(
                 child: TextField(
                   decoration: InputDecoration(
-                      labelText: 'Телефон',
+                      labelText: 'Новый пароль',
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(width: 3, color: Colors.blue.shade100),
                         borderRadius: BorderRadius.circular(15),
@@ -52,11 +52,11 @@ class LoginApp extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(30, 8.5, 30, 8.5),
+              padding: const EdgeInsets.fromLTRB(32, 5, 32, 5),
               child: Center(
                 child: TextField(
                   decoration: InputDecoration(
-                      labelText: 'Пароль',
+                      labelText: 'Подтвердите пароль',
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(width: 3, color: Colors.blue.shade100),
                         borderRadius: BorderRadius.circular(15),
@@ -72,9 +72,10 @@ class LoginApp extends StatelessWidget {
                 ),
               ),
             ),
+            Padding(padding: EdgeInsets.only(top: 35)),
             RaisedButton(
-              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>MainPage()));},
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.0)),
+              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginApp()));},
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
               padding: const EdgeInsets.all(0.0),
               child: Ink(
                 decoration: const BoxDecoration(
@@ -86,37 +87,18 @@ class LoginApp extends StatelessWidget {
                       Color(0xFFE953DA),
                     ],
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(14.0)),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
                 ),
                 child: Container(
                   constraints: const BoxConstraints(minWidth: 88.0, minHeight: 36.0,maxWidth:295,maxHeight: 56), // min sizes for Material buttons
                   alignment: Alignment.center,
                   child: const Text(
-                    'Войти',
+                    'Отправить',
                     style: TextStyle(color: Colors.white,fontSize: 36),
                     textAlign: TextAlign.center,
                   ),
                 ),
               ),
-            ),
-            Padding(padding: EdgeInsets.only(top: 26)),
-            Center(
-              child: TextButton(
-                child: Text("Забыли пароль?",style: TextStyle(color: Colors.blueAccent,fontSize: 14),),
-                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>LosePass()));},
-              )
-            ),
-            Padding(padding: EdgeInsets.only(top: 28)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Нет аккаунта?",style: TextStyle(color: Color(0xFF333333),fontSize: 14),),
-                Padding(padding: EdgeInsets.only(left: 10)),
-                TextButton(
-                  child: Text("Создать аккаунт",style: TextStyle(color: Colors.blueAccent,fontSize: 14),),
-                  onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Reg_page()));},
-                )
-              ],
             ),
           ],
         ),
