@@ -13,12 +13,17 @@ class LoginApp extends StatefulWidget {
 
 class _LoginAppState extends State<LoginApp> {
 
-  
+  void initFirebase() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+  }
+
+
 
   @override
   void initState() {
     super.initState();
-    
+    initFirebase();
   }
 
   Color  BLUE = Color(0xFF4C44CF);
