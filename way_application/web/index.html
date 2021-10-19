@@ -94,5 +94,24 @@
       loadMainDartJs();
     }
   </script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyD2VRMse0sl5US9dRIZYabGPA1Rz60amQg",
+      authDomain: "wayproject-7c9a1.firebaseapp.com",
+      projectId: "wayproject-7c9a1",
+      storageBucket: "wayproject-7c9a1.appspot.com",
+      messagingSenderId: "23851030800",
+      appId: "1:23851030800:web:53ed5c146cccd65c8ead95"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
 </body>
 </html>
