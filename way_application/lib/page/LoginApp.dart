@@ -1,13 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:way_application/page/LosePass.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'Reg_Page.dart';
 import 'LosePass.dart';
 import 'MainPage.dart';
 
-class LoginApp extends StatelessWidget {
+class LoginApp extends StatefulWidget {
+  @override
+  State<LoginApp> createState() => _LoginAppState();
+}
+
+class _LoginAppState extends State<LoginApp> {
+
+  void initFirebase() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp();
+  }
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    initFirebase();
+  }
+
   Color  BLUE = Color(0xFF4C44CF);
+
   Color  GRAY = Color(0xFF333333);
+
   Color  RED = Color(0xFFE953DA);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
