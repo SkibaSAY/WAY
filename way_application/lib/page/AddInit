@@ -1,0 +1,166 @@
+import 'dart:html';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'MainPage.dart';
+import 'ChooseIcon.dart';
+
+class AddInit extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(primaryColor: Colors.white),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Row(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.purple,
+                  )),
+              Padding(padding: EdgeInsets.only(left: 25)),
+              Text(
+                'Добавить инициативу',
+                style: TextStyle(color: Color(0xFFA7058C), fontSize: 24.0),
+              )
+            ],
+          ),
+          backgroundColor: Colors.white,
+        ),
+        body: Column(
+          children: [
+            Padding(padding: EdgeInsets.only(top: 25)),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(32, 5, 32, 5),
+              child: Center(
+                  child: Container(
+                child: TextField(
+                  decoration: InputDecoration(
+                      labelText: 'Название',
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(width: 1, color: Colors.purple.shade400),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 3,
+                          color: Color(0xFFE8E6EA),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      )),
+                ),
+              )),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ChooseIcon()));
+                  },
+                  icon: Icon(Icons.photo_camera),
+                  iconSize: 65.0,
+                  color: Colors.blueAccent,
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.photo_size_select_actual),
+                  iconSize: 65.0,
+                  color: Colors.blueAccent,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text('Выберите иконку'),
+                Text('Добавьте фото'),
+              ],
+            ),
+            Padding(padding: EdgeInsets.only(top: 20)),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(32, 5, 32, 5),
+              child: Center(
+                  child: SizedBox(
+                height: 150,
+                child: TextField(
+                  decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 150, horizontal: 20),
+                      labelText: 'Описание инициативы',
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(width: 1, color: Colors.purple.shade400),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 3,
+                          color: Color(0xFFE8E6EA),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      )),
+                ),
+              )),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(32, 5, 32, 5),
+              child: Center(
+                  child: SizedBox(
+                height: 30,
+                child: TextField(
+                  decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+                      labelText: 'Адрес',
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(width: 1, color: Colors.purple.shade400),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 3,
+                          color: Color(0xFFE8E6EA),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      )),
+                ),
+              )),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(32, 5, 32, 5),
+              child: Center(
+                  child: SizedBox(
+                height: 30,
+                child: TextField(
+                  decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+                      labelText: 'Ключевые слова',
+                      enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(width: 1, color: Colors.purple.shade400),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 3,
+                          color: Color(0xFFE8E6EA),
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      )),
+                ),
+              )),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
