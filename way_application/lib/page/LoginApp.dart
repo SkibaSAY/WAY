@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:way_application/page/LosePass.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:way_application/main.dart';
 import 'Reg_Page.dart';
 import 'LosePass.dart';
 import 'MainPage.dart';
@@ -13,12 +16,17 @@ class LoginApp extends StatefulWidget {
 
 class _LoginAppState extends State<LoginApp> {
 
+  String phone = '';
+  String password = '';
+  bool infofound = false;
+  bool logged = false;
+
+  
+
   void initFirebase() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
   }
-
-
 
   @override
   void initState() {
@@ -34,7 +42,9 @@ class _LoginAppState extends State<LoginApp> {
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
           children: [
@@ -58,6 +68,9 @@ class _LoginAppState extends State<LoginApp> {
               padding: const EdgeInsets.fromLTRB(30, 0, 30, 8.5),
               child: Center(
                 child: TextField(
+                  onChanged: (String value) {
+                    phone = value;
+                  },
                   decoration: InputDecoration(
                       labelText: 'Телефон',
                       enabledBorder: OutlineInputBorder(
@@ -79,6 +92,9 @@ class _LoginAppState extends State<LoginApp> {
               padding: const EdgeInsets.fromLTRB(30, 8.5, 30, 8.5),
               child: Center(
                 child: TextField(
+                  onChanged: (String value) {
+                    password = value;
+                  },
                   decoration: InputDecoration(
                       labelText: 'Пароль',
                       enabledBorder: OutlineInputBorder(
@@ -97,7 +113,29 @@ class _LoginAppState extends State<LoginApp> {
               ),
             ),
             RaisedButton(
-              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>MainPage()));},
+              onPressed: () 
+              {                
+                FirebaseFirestore.instance
+                .collection('users')
+                .get()
+                .then((QuerySnapshot querySnapshot) {
+                    querySnapshot.docs.forEach((doc) {
+                    if(doc.id == phone) {
+                      if(doc["password"] == password) {
+                        logged = true;
+                        SessionID = Random(password.length).nextInt(10000000);
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>MainPage()));
+                      } else {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>LosePass()));
+                      } 
+                    }                     
+                    }                    
+                    );
+                  });
+                  if(logged) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Reg_page()));
+                  }                                  
+                },
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14.0)),
               padding: const EdgeInsets.all(0.0),
               child: Ink(
