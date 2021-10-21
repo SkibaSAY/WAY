@@ -1,0 +1,207 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'AddInit.dart';
+
+class ChooseIcon extends StatelessWidget {
+  @override
+  Widget build(BuildContext) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.blueAccent,
+                )),
+            Padding(padding: EdgeInsets.only(left: 100)),
+            Text(
+              'Выберите иконку',
+              style: TextStyle(color: Color(0xFFA7058C)),
+            )
+          ],
+        ),
+        backgroundColor: Colors.white,
+      ),
+      body: Column(
+        children: [
+          Padding(padding: EdgeInsets.only(top: 10)),
+          Center(
+            child: Card(
+                //класс, создающий элемент, похожий на карточку
+                margin: EdgeInsets.all(10),
+                elevation: 20,
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.blueAccent, width: 2),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                shadowColor: Colors.blueAccent[60],
+                child: ListTile(
+                    title: Text(
+                      "Градостроительство",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: Text(""),
+                    leading: Container(
+                      child: Icon(Icons.home, size: 55, color: Colors.white),
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFF4C44CF),
+                            Color(0xFFE953DA),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                      ),
+                    ))),
+          ),
+          Center(
+            child: Card(
+                //класс, создающий элемент, похожий на карточку
+                margin: EdgeInsets.all(10),
+                elevation: 20,
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.blueAccent, width: 2),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                shadowColor: Colors.blueAccent[60],
+                child: ListTile(
+                    title: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Дорожное строительство",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    subtitle: Text(""),
+                    leading: Container(
+                      child:
+                          Icon(Icons.add_road, size: 55, color: Colors.white),
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFF4C44CF),
+                            Color(0xFFE953DA),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                      ),
+                    ))),
+          ),
+          Center(
+            child: Card(
+                //класс, создающий элемент, похожий на карточку
+                margin: EdgeInsets.all(10),
+                elevation: 20,
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.blueAccent, width: 2),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                shadowColor: Colors.blueAccent[60],
+                child: ListTile(
+                    title: Text(
+                      "Озеленение",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: Text(""),
+                    leading: Container(
+                      child: Icon(Icons.nature_people,
+                          size: 55, color: Colors.white),
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFF4C44CF),
+                            Color(0xFFE953DA),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                      ),
+                    ))),
+          ),
+          Center(
+            child: Card(
+                //класс, создающий элемент, похожий на карточку
+                margin: EdgeInsets.all(10),
+                elevation: 20,
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.blueAccent, width: 2),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                shadowColor: Colors.blueAccent[60],
+                child: ListTile(
+                    title: Text(
+                      "Взаимодействие с животными",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: Text(""),
+                    leading: Container(
+                      child: Icon(Icons.pets_outlined,
+                          size: 55, color: Colors.white),
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFF4C44CF),
+                            Color(0xFFE953DA),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                      ),
+                    ))),
+          ),
+          Center(
+            child: Card(
+                //класс, создающий элемент, похожий на карточку
+                margin: EdgeInsets.all(10),
+                elevation: 20,
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.blueAccent, width: 2),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                shadowColor: Colors.blueAccent[60],
+                child: ListTile(
+                    title: Text(
+                      "Социальное взаимодействие",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: Text(""),
+                    leading: Container(
+                      child: Icon(Icons.people_outline,
+                          size: 55, color: Colors.white),
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFF4C44CF),
+                            Color(0xFFE953DA),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(18.0)),
+                      ),
+                    ))),
+          ),
+        ],
+      ),
+    );
+  }
+}
