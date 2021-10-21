@@ -1,10 +1,43 @@
 
-import 'package:flutter/material.dart';
+import 'dart:math';
 
-class Reg_page extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:way_application/main.dart';
+import 'package:way_application/page/LosePass.dart';
+import 'MainPage.dart';
+import 'LoginApp.dart';
+
+class Reg_page extends StatefulWidget {
   // This widget is the root of your application.
   @override
+  State<Reg_page> createState() => _Reg_pageState();
+}
+
+class _Reg_pageState extends State<Reg_page> {
+  String username = '';
+  String phone = '';
+  String password = '';  
+  bool infofound = false;
+  bool registered = false;
+
+  
+
+  @override
   Widget build(BuildContext context) {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    Future<void> addUser() {      
+      return users
+          .doc('$phone')
+          .set({            
+            'username': username,
+            'password': password,
+            'sessionID': SessionID
+          })
+          .then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));
+    }
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Row(
@@ -34,6 +67,9 @@ class Reg_page extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(32, 5, 32, 5),
               child: Center(
                 child: TextField(
+                  onChanged: (String value) {
+                    username = value;
+                  },
                   decoration: InputDecoration(
                       labelText: 'Имя и фамилия',
                       enabledBorder: OutlineInputBorder(
@@ -55,6 +91,9 @@ class Reg_page extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(32, 5, 32, 5),
               child: Center(
                 child: TextField(
+                  onChanged: (String value) {
+                    phone = value;
+                  },
                   decoration: InputDecoration(
                       labelText: 'Телефон',
                       enabledBorder: OutlineInputBorder(
@@ -76,6 +115,9 @@ class Reg_page extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(32, 5, 32, 5),
               child: Center(
                 child: TextField(
+                  onChanged: (String value) {
+                    password = value;
+                  },
                   decoration: InputDecoration(
                       labelText: 'Пароль',
                       enabledBorder: OutlineInputBorder(
@@ -95,7 +137,24 @@ class Reg_page extends StatelessWidget {
             ),
             Padding(padding: EdgeInsets.only(top: 35)),
             RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                SessionID = Random(password.length).nextInt(10000000);
+                FirebaseFirestore.instance
+                .collection('users')
+                .get()
+                .then((QuerySnapshot querySnapshot) {
+                    querySnapshot.docs.forEach((doc) {
+                    if(doc.id == phone) {  
+                    registered = true;                  
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>LosePass()));
+                    }                   
+                    });
+                  });
+                  if(registered) {
+                    addUser();
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>MainPage())); 
+                  }                                 
+              },
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
               padding: const EdgeInsets.all(0.0),
               child: Ink(
